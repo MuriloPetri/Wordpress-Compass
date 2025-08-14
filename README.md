@@ -21,9 +21,47 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 ## 🛠️ COMPONENTES NA AWS
 
 ### 🔹 VPC Personalizada
-- **Subnets**: 2 públicas e 2 privadas, distribuídas em duas Zonas de Disponibilidade (AZs).
+- **Subnets**: 2 públicas e 4 privadas, distribuídas em duas Zonas de Disponibilidade (AZs).
 - **Internet Gateway (IGW)**: Permite acesso à internet pelas subnets públicas.
 - **NAT Gateway**: Localizado nas subnets públicas, permitindo que as instâncias privadas acessem a internet.
+
+- ## 🔹 Definindo os Security Groups
+- ## 🔐 Regras de Segurança AWS
+
+### sg-ALB (Application Load Balancer)
+| Direção        | Tipo   | Protocolo | Porta | Origem/Destino   |
+|----------------|--------|-----------|-------|------------------|
+| Entrada        | HTTP   |    TCP    | 80    |    0.0.0.0/0     |
+| Saída          | HTTP   |    TCP    | 80    |     sg-EC2       |
+
+---
+
+### sg-RDS (Banco de Dados MySQL/Aurora)
+| Direção        | Tipo          | Protocolo | Porta | Origem/Destino |
+|----------------|---------------|-----------|-------|----------------|
+| Entrada        | MySQL/Aurora  |    TCP    | 3306  |    sg-EC2      |
+| Saída          | MySQL/Aurora  |    TCP    | 3306  |    sg-EC2      |
+
+---
+
+### sg-EFS (Armazenamento EFS)
+| Direção        | Tipo  | Protocolo | Porta | Origem/Destino   |
+|----------------|-------|-----------|-------|------------------|
+| Entrada        | NFS   |    TCP    | 2049  |    sg-EC2        |
+| Saída          | NFS   |    TCP    | 2049  |    sg-EC2        |
+
+---
+
+### sg-EC2 
+| Direção        |      Tipo      | Protocolo | Porta | Origem/Destino   |
+|------------ ---|----------------|-----------|-------|------------------|
+| Entrada        |      HTTP      |    TCP    |   80  |    sg-ALB        |
+| Entrada        |      MySQL     |    TCP    |  3306 |    sg-RDS        |
+| Saída          |       NFS      |    TCP    |   80  |    0.0.0.0/0     |
+| Saída          |  Todo Trafego  |    TCP    |   80  |    0.0.0.0/0     |
+| Saída          |      MySQL     |    TCP    |  3306 |    0.0.0.0/0     |
+| Saída          |      HTTP      |    TCP    |   80  |    0.0.0.0/0     |
+
 
 ### 🔹 Armazenamento e Banco de Dados
 - **Amazon EFS**: Sistema de arquivos compartilhado e centralizado.
