@@ -25,8 +25,7 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 - **Internet Gateway (IGW)**: Permite acesso à internet pelas subnets públicas.
 - **NAT Gateway**: Localizado nas subnets públicas, permitindo que as instâncias privadas acessem a internet.
 
-- ## 🔹 Definindo os Security Groups
-- ## 🔐 Regras de Segurança AWS
+- ## 🔐 Security Groups
 
 ### sg-ALB (Application Load Balancer)
 | Direção        | Tipo   | Protocolo | Porta | Origem/Destino   |
