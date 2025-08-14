@@ -106,4 +106,4 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 > ⚠️ Atenção: para exibir a imagem corretamente no GitHub, coloque o arquivo dentro do projeto (ex: `images/image.png`) e use caminho relativo:
 
 ```markdown
-![WordPress](images/image.png)
+[![WordPress](images/image.png)](https://github.com/MuriloPetri/Wordpress-Compass/blob/main/image.png?raw=true)
