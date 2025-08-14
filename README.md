@@ -51,7 +51,7 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 
 ---
 
-### sg-EC2 
+### sg-EC2 (EC2)
 | Direção        |      Tipo      | Protocolo | Porta | Origem/Destino   |
 |------------ ---|----------------|-----------|-------|------------------|
 | Entrada        |      HTTP      |    TCP    |   80  |    sg-ALB        |
