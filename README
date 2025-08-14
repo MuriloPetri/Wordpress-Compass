@@ -1,77 +1,75 @@
-Projeto WordPress em Alta Disponibilidade na AWS
-Bem-vindo ao repositório do projeto 
+# 🌐 Projeto WordPress em Alta Disponibilidade na AWS
 
-WordPress em Alta Disponibilidade na AWS! Este projeto demonstra como implantar a plataforma WordPress na nuvem da Amazon Web Services (AWS) de forma escalável e tolerante a falhas. A arquitetura utiliza os principais serviços gerenciados da AWS para garantir desempenho e disponibilidade, simulando um ambiente de produção real. 
+Bem-vindo ao repositório do projeto **WordPress em Alta Disponibilidade na AWS**!  
+Este projeto demonstra como implantar a plataforma **WordPress** na nuvem **Amazon Web Services (AWS)** de forma escalável e tolerante a falhas.
 
+A arquitetura utiliza serviços gerenciados da AWS para garantir **desempenho**, **resiliência** e **alta disponibilidade**, simulando um ambiente de produção real.
 
+---
 
-☁️ Arquitetura do Projeto
-A arquitetura foi cuidadosamente projetada para ser resiliente. A seguir, uma visão geral dos componentes e como eles interagem:
+## ☁️ Arquitetura do Projeto
 
-A aplicação WordPress será distribuída em múltiplas instâncias EC2, gerenciadas por um Auto Scaling Group (ASG). O tráfego de entrada é balanceado por um 
+A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 
-Application Load Balancer (ALB). 
+- **Auto Scaling Group (ASG)** com múltiplas instâncias EC2 para executar o WordPress.
+- **Application Load Balancer (ALB)** para balancear o tráfego de entrada.
+- **Amazon EFS** para armazenamento compartilhado de arquivos do WordPress (mídias, plugins, etc.).
+- **Amazon RDS (MySQL/MariaDB)** para armazenar dados como posts e informações de usuários.
 
-Para garantir a consistência e a resiliência, utilizamos serviços gerenciados para o armazenamento:
+---
 
+## 🛠️ Componentes na AWS
 
-Amazon EFS: O sistema de arquivos do WordPress (mídias, plugins, etc.) é centralizado e compartilhado através do Amazon EFS. 
+### 🔹 VPC Personalizada
+- **Subnets**: 2 públicas e 2 privadas, distribuídas em duas Zonas de Disponibilidade (AZs).
+- **Internet Gateway (IGW)**: Permite acesso à internet pelas subnets públicas.
+- **NAT Gateway**: Localizado nas subnets públicas, permitindo que as instâncias privadas acessem a internet.
 
+### 🔹 Armazenamento e Banco de Dados
+- **Amazon EFS**: Sistema de arquivos compartilhado e centralizado.
+- **Amazon RDS**: Banco de dados relacional gerenciado (MySQL/MariaDB).
 
+---
 
+## 🚀 Etapas de Implementação
 
-Amazon RDS: Os dados da aplicação, como posts e informações de usuário, são armazenados em um banco de dados relacional altamente disponível (MySQL/MariaDB) com o Amazon RDS. 
+1. **Criar a VPC**
+   - Definir subnets, IGW e NAT Gateway.
 
+2. **Configurar o RDS**
+   - Criar instância MySQL/MariaDB.
+   - Configurar grupo de segurança para acesso apenas das instâncias EC2.
 
-O uso desses serviços gerenciados nos permite focar na lógica de implantação e escalabilidade, sem a necessidade de gerenciar manualmente servidores de banco de dados ou sistemas de arquivos. 
+3. **Configurar o EFS**
+   - Criar sistema de arquivos NFS.
+   - Configurar permissões para acesso pelas instâncias EC2.
 
-🛠️ Componentes na AWS
-O projeto utiliza uma 
+4. **Criar Launch Template**
+   - Incluir script *user-data* para:
+     - Instalar o WordPress.
+     - Montar o EFS.
+     - Conectar ao banco RDS.
 
-VPC personalizada com as seguintes configurações: 
+5. **Criar Auto Scaling Group**
+   - Usar o Launch Template.
+   - Configurar nas subnets privadas.
+   - Associar ao ALB.
 
+6. **Configurar Application Load Balancer**
+   - Associar às subnets públicas.
+   - Redirecionar tráfego para o ASG.
 
-Subnets: Duas subnets públicas e duas subnets privadas, distribuídas em duas Zonas de Disponibilidade (AZs). 
+---
 
+## ⚠️ Cuidados para Contas de Estudo
 
+- Monitore custos no **Cost Explorer** diariamente.
+- **Remova recursos** ao finalizar (incluindo VPCs).
+- EC2:
+  - Tipos compatíveis com *free tier*.
+  - Adicionar *tags*: `Name`, `CostCenter`, `Project`.
+- RDS:
+  - Tipo: `db.t3g.micro`.
+  - **Sem Multi-AZ**.
 
-
-Internet Gateway (IGW) e NAT Gateway: O IGW permite o acesso à internet a partir das subnets públicas, enquanto o NAT Gateway, nas subnets públicas, permite que as instâncias nas subnets privadas acessem a internet para baixar atualizações, por exemplo. 
-
-
-🚀 Etapas de Implementação
-Siga este roteiro para construir a infraestrutura do projeto:
-
-
-Criação da VPC: Defina as subnets, o IGW e o NAT Gateway. 
-
-Criação do RDS: Suba uma instância de banco de dados MySQL/MariaDB. Configure o grupo de segurança para que apenas as instâncias EC2 possam acessá-lo. 
-
-
-
-Criação do EFS: Crie o sistema de arquivos NFS e configure as permissões no grupo de segurança para que as instâncias EC2 possam montá-lo. 
-
-
-
-Criação do Launch Template: Configure o script user-data para instalar o WordPress, montar o EFS e conectar-se ao banco de dados. 
-
-Criação do Auto Scaling Group: Use o Launch Template para criar o ASG. Ele deve ser configurado nas subnets privadas e associado ao ALB. 
-
-
-
-Criação do Application Load Balancer: Associe o ALB às subnets públicas e configure-o para encaminhar o tráfego para o ASG. 
-
-⚠️ Pontos Importantes para Contas de Estudo
-Para evitar custos e seguir as melhores práticas para contas de estudo:
-
-
-Monitore os custos diariamente no Cost Explorer. 
-
-
-Exclua todos os recursos após finalizar, incluindo as VPCs. 
-
-
-EC2: As instâncias e volumes precisam ter as tags Name, CostCenter e Project. 
-
-
-RDS: O tipo deve ser db.t3g.micro e sem a opção de Multi-AZ. 
+---
