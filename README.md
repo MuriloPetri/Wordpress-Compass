@@ -105,5 +105,5 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 ### 10. WordPress
 > ⚠️ Atenção: para exibir a imagem corretamente no GitHub, coloque o arquivo dentro do projeto (ex: `images/image.png`) e use caminho relativo:
 
+<img width="1917" height="918" alt="Image" src="https://github.com/user-attachments/assets/3179a93c-a83b-46e7-820d-b855e306d63d" />
 ```markdown[[
-<img width="1917" height="918" alt="Image" src="https://github.com/user-attachments/assets/33ab70b8-a5df-4c6b-8949-64049b0d682f" />
