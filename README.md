@@ -25,7 +25,16 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 - **Internet Gateway (IGW)**: Permite acesso à internet pelas subnets públicas.
 - **NAT Gateway**: Localizado nas subnets públicas, permitindo que as instâncias privadas acessem a internet.
 
-- ## 🔐 Security Groups
+
+## 🚀 ETAPAS DE IMPLEMENTAÇÃO
+
+1. **Criar a VPC**
+   - Criar 2 subnets publicas
+   - Criar 4 subnets privadas
+   - IGW e NAT Gateway.
+
+2. **Criando Security Groups**
+   - ## 🔐 Security Groups
 
 ### sg-ALB (Application Load Balancer)
 | Direção        | Tipo   | Protocolo | Porta | Origem/Destino   |
@@ -62,39 +71,48 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 | Saída          | HTTP          | TCP       | 80    | 0.0.0.0/0      |
 
 
-### 🔹 Armazenamento e Banco de Dados
-- **Amazon EFS**: Sistema de arquivos compartilhado e centralizado.
-- **Amazon RDS**: Banco de dados relacional gerenciado (MySQL/MariaDB).
 
----
+3. **Configurar o RDS**
+   - Criar instância MySQL/MariaDB. (Qual voce preferir)
+   - Selecionar opção de *Free-tier*
+   - Tipo: db.t3.micro
+   - Associe a VPC que criou para o projeto
 
-## 🚀 ETAPAS DE IMPLEMENTAÇÃO
-
-1. **Criar a VPC**
-   - Definir subnets, IGW e NAT Gateway.
-
-2. **Configurar o RDS**
-   - Criar instância MySQL/MariaDB.
-   - Configurar grupo de segurança para acesso apenas das instâncias EC2.
-
-3. **Configurar o EFS**
+4. **Configurar o EFS**
    - Criar sistema de arquivos NFS.
-   - Configurar permissões para acesso pelas instâncias EC2.
+   - Personalize: Usando as subnets privadas de cada zona
 
-4. **Criar Launch Template**
+5. **Criar Launch Template**
+   - Sistema Operacional: Amazon Linux
+   - Tipo: t2.micro
+   - Selecione a VPC do projeto
    - Incluir script *user-data* para:
      - Instalar o WordPress.
      - Montar o EFS.
      - Conectar ao banco RDS.
 
-5. **Criar Auto Scaling Group**
-   - Usar o Launch Template.
-   - Configurar nas subnets privadas.
-   - Associar ao ALB.
+6. **Criando o Target Group (Grupo de Destino)**
+   -Tipo de destino: **Instâncias**
+   -Caminho de verificação de integridade (Health Check Path): **/ ou /wp-admin/images/wordpress-logo.svg**
 
-6. **Configurar Application Load Balancer**
-   - Associar às subnets públicas.
-   - Redirecionar tráfego para o ASG.
+7. **Configurar Application Load Balancer**
+   - Associar às **subnets públicas**.
+   - Direcionar para o **Target Groupt**.
+  
+8. **Criar Auto Scaling Group**
+   - Usar o Launch Template criado.
+   - Configurar nas subnets privadas.
+   - Associar ao ALB (Aplication Load Balancer).
+  
+9. **Resultados Finais**
+   -Acesse a pagina **Load Balancers** na seção EC2
+   - Copie o Nome DNS que irá aparecer
+   - Pesquise o que colou, em alguns instantes irá aparecer a tela do Wordpress
+
+10. **Wordpres**
+    ![Wordpress](C:\Users\Muliro\Downloads)
+
+     
 
 ---
 
