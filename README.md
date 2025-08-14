@@ -51,15 +51,15 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 
 ---
 
-### sg-EC2 (EC2)
-| Direção        |      Tipo      | Protocolo | Porta | Origem/Destino   |
-|------------ ---|----------------|-----------|-------|------------------|
-| Entrada        |      HTTP      |    TCP    |   80  |    sg-ALB        |
-| Entrada        |      MySQL     |    TCP    |  3306 |    sg-RDS        |
-| Saída          |       NFS      |    TCP    |   80  |    0.0.0.0/0     |
-| Saída          |  Todo Trafego  |    TCP    |   80  |    0.0.0.0/0     |
-| Saída          |      MySQL     |    TCP    |  3306 |    0.0.0.0/0     |
-| Saída          |      HTTP      |    TCP    |   80  |    0.0.0.0/0     |
+### sg-EC2 (Instâncias EC2)
+| Direção        | Tipo          | Protocolo | Porta | Origem/Destino |
+|----------------|---------------|-----------|-------|----------------|
+| Entrada        | HTTP          | TCP       | 80    | sg-ALB         |
+| Entrada        | MySQL         | TCP       | 3306  | sg-RDS         |
+| Saída          | NFS           | TCP       | 2049  | 0.0.0.0/0      |
+| Saída          | Todo Tráfego  | TCP       | 80    | 0.0.0.0/0      |
+| Saída          | MySQL         | TCP       | 3306  | 0.0.0.0/0      |
+| Saída          | HTTP          | TCP       | 80    | 0.0.0.0/0      |
 
 
 ### 🔹 Armazenamento e Banco de Dados
