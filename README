@@ -1,0 +1,77 @@
+Projeto WordPress em Alta Disponibilidade na AWS
+Bem-vindo ao repositório do projeto 
+
+WordPress em Alta Disponibilidade na AWS! Este projeto demonstra como implantar a plataforma WordPress na nuvem da Amazon Web Services (AWS) de forma escalável e tolerante a falhas. A arquitetura utiliza os principais serviços gerenciados da AWS para garantir desempenho e disponibilidade, simulando um ambiente de produção real. 
+
+
+
+☁️ Arquitetura do Projeto
+A arquitetura foi cuidadosamente projetada para ser resiliente. A seguir, uma visão geral dos componentes e como eles interagem:
+
+A aplicação WordPress será distribuída em múltiplas instâncias EC2, gerenciadas por um Auto Scaling Group (ASG). O tráfego de entrada é balanceado por um 
+
+Application Load Balancer (ALB). 
+
+Para garantir a consistência e a resiliência, utilizamos serviços gerenciados para o armazenamento:
+
+
+Amazon EFS: O sistema de arquivos do WordPress (mídias, plugins, etc.) é centralizado e compartilhado através do Amazon EFS. 
+
+
+
+
+Amazon RDS: Os dados da aplicação, como posts e informações de usuário, são armazenados em um banco de dados relacional altamente disponível (MySQL/MariaDB) com o Amazon RDS. 
+
+
+O uso desses serviços gerenciados nos permite focar na lógica de implantação e escalabilidade, sem a necessidade de gerenciar manualmente servidores de banco de dados ou sistemas de arquivos. 
+
+🛠️ Componentes na AWS
+O projeto utiliza uma 
+
+VPC personalizada com as seguintes configurações: 
+
+
+Subnets: Duas subnets públicas e duas subnets privadas, distribuídas em duas Zonas de Disponibilidade (AZs). 
+
+
+
+
+Internet Gateway (IGW) e NAT Gateway: O IGW permite o acesso à internet a partir das subnets públicas, enquanto o NAT Gateway, nas subnets públicas, permite que as instâncias nas subnets privadas acessem a internet para baixar atualizações, por exemplo. 
+
+
+🚀 Etapas de Implementação
+Siga este roteiro para construir a infraestrutura do projeto:
+
+
+Criação da VPC: Defina as subnets, o IGW e o NAT Gateway. 
+
+Criação do RDS: Suba uma instância de banco de dados MySQL/MariaDB. Configure o grupo de segurança para que apenas as instâncias EC2 possam acessá-lo. 
+
+
+
+Criação do EFS: Crie o sistema de arquivos NFS e configure as permissões no grupo de segurança para que as instâncias EC2 possam montá-lo. 
+
+
+
+Criação do Launch Template: Configure o script user-data para instalar o WordPress, montar o EFS e conectar-se ao banco de dados. 
+
+Criação do Auto Scaling Group: Use o Launch Template para criar o ASG. Ele deve ser configurado nas subnets privadas e associado ao ALB. 
+
+
+
+Criação do Application Load Balancer: Associe o ALB às subnets públicas e configure-o para encaminhar o tráfego para o ASG. 
+
+⚠️ Pontos Importantes para Contas de Estudo
+Para evitar custos e seguir as melhores práticas para contas de estudo:
+
+
+Monitore os custos diariamente no Cost Explorer. 
+
+
+Exclua todos os recursos após finalizar, incluindo as VPCs. 
+
+
+EC2: As instâncias e volumes precisam ter as tags Name, CostCenter e Project. 
+
+
+RDS: O tipo deve ser db.t3g.micro e sem a opção de Multi-AZ. 
