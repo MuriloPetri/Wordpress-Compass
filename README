@@ -1,13 +1,13 @@
 # 🌐 Projeto WordPress em Alta Disponibilidade na AWS
 
 Bem-vindo ao repositório do projeto **WordPress em Alta Disponibilidade na AWS**!  
-Este projeto demonstra como implantar a plataforma **WordPress** na nuvem **Amazon Web Services (AWS)** de forma escalável e tolerante a falhas.
+Este projeto demonstra como implantar a plataforma **WordPress** na **Amazon Web Services (AWS)** de forma escalável e tolerante a falhas.
 
 A arquitetura utiliza serviços gerenciados da AWS para garantir **desempenho**, **resiliência** e **alta disponibilidade**, simulando um ambiente de produção real.
 
 ---
 
-## ☁️ Arquitetura do Projeto
+## ☁️ ARQUITETURA DO PROJETO
 
 A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 
@@ -18,7 +18,7 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 
 ---
 
-## 🛠️ Componentes na AWS
+## 🛠️ COMPONENTES NA AWS
 
 ### 🔹 VPC Personalizada
 - **Subnets**: 2 públicas e 2 privadas, distribuídas em duas Zonas de Disponibilidade (AZs).
@@ -31,7 +31,7 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 
 ---
 
-## 🚀 Etapas de Implementação
+## 🚀 ETAPAS DE IMPLEMENTAÇÃO
 
 1. **Criar a VPC**
    - Definir subnets, IGW e NAT Gateway.
@@ -61,7 +61,7 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 
 ---
 
-## ⚠️ Cuidados para Contas de Estudo
+## ⚠️ CUIDADOS PARA CONTAS DE ESTUDO
 
 - Monitore custos no **Cost Explorer** diariamente.
 - **Remova recursos** ao finalizar (incluindo VPCs).
@@ -73,3 +73,6 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
   - **Sem Multi-AZ**.
 
 ---
+
+## 📜 LICENÇA
+Este projeto é para fins educacionais e segue as boas práticas de implantação em nuvem.
