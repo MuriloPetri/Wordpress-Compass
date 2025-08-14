@@ -110,7 +110,7 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
    - Pesquise o que colou, em alguns instantes irá aparecer a tela do Wordpress
 
 10. **Wordpres**
-    ![Wordpress](C:\Users\Muliro\Downloads)
+    ![Wordpress](C:\Users\Muliro\Downloads/image)
 
      
 
