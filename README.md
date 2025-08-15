@@ -66,15 +66,15 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 - Tipo: `db.t3.micro`  
 - Associar à VPC criada
 - **IMPORTANTE ->** Em configuração adicional escolha o mesmo nome do **Identificador da instância de banco de dados** para evitar possíveis erros
-<img width="1332" height="167" alt="Image" src="https://github.com/user-attachments/assets/fb725fae-a211-40c9-a8e3-0c288a526045" />
-<img width="889" height="166" alt="Image" src="https://github.com/user-attachments/assets/3d0f4120-6df8-4315-95db-8e6547a6a7ef" />
+- <img width="1332" height="167" alt="Image" src="https://github.com/user-attachments/assets/fb725fae-a211-40c9-a8e3-0c288a526045" />
+- <img width="889" height="166" alt="Image" src="https://github.com/user-attachments/assets/3d0f4120-6df8-4315-95db-8e6547a6a7ef" />
 
 ### 4. Configurar o EFS
 - Criar sistema de arquivos NFS
 - Clicar em **PERSONALIZAR**
-<img width="676" height="684" alt="Image" src="https://github.com/user-attachments/assets/d0b071e2-a5f6-42c6-97f0-483338c207a8" />
+- <img width="676" height="684" alt="Image" src="https://github.com/user-attachments/assets/d0b071e2-a5f6-42c6-97f0-483338c207a8" />
 - Associar subnets privadas de cada zona
-<img width="1559" height="342" alt="Image" src="https://github.com/user-attachments/assets/1851271f-2a8d-47b9-bc55-4d4ce96b04d4" />
+- <img width="1559" height="342" alt="Image" src="https://github.com/user-attachments/assets/1851271f-2a8d-47b9-bc55-4d4ce96b04d4" />
 - E criar a EFS
 
 ### 5. Criar Launch Template
