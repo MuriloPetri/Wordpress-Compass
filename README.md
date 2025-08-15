@@ -99,11 +99,13 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 - Selecionar a VPC criada para o projeto
 - Associar às **subnets públicas**  
 - Direcionar tráfego para o **Target Group**  
-
+<img width="1300" height="235" alt="Image" src="https://github.com/user-attachments/assets/a6c0ec88-37fb-4763-b302-2fba238fa973" />
 
 ### 8. Criar Auto Scaling Group
-- Usar o Launch Template criado  
-- Configurar nas subnets privadas  
+- Usar o Launch Template criado
+- VPC do projeto
+- Configurar nas subnets privadas
+- Balanceamento de Carga; Selecione a opção: Anexar a um balanceador de carga existente   
 - Associar ao ALB (Application Load Balancer)  
 
 ### 9. Resultados Finais
