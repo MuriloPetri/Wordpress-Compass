@@ -68,10 +68,10 @@
 - <img width="889" height="166" alt="Image" src="https://github.com/user-attachments/assets/3d0f4120-6df8-4315-95db-8e6547a6a7ef" />
 
 ### 4. Configurar o EFS
-- Criar sistema de arquivos NFS
+- Criar sistema de arquivos EFS
 - Clicar em **PERSONALIZAR**
 - <img width="676" height="684" alt="Image" src="https://github.com/user-attachments/assets/d0b071e2-a5f6-42c6-97f0-483338c207a8" />
-- Associar subnets privadas de cada zona
+- Associar subnets privadas de cada zona, e selecionar o grupo de segurança da EFS
 - <img width="1559" height="342" alt="Image" src="https://github.com/user-attachments/assets/1851271f-2a8d-47b9-bc55-4d4ce96b04d4" />
 - E criar a EFS
 
