@@ -1,7 +1,5 @@
 ## ☁️ ARQUITETURA DO PROJETO
 
-A infraestrutura foi projetada para ser **resiliente** e **escalável**:
-
 - **Auto Scaling Group (ASG)** com múltiplas instâncias EC2 para executar o WordPress.  
 - **Application Load Balancer (ALB)** para balancear o tráfego de entrada.  
 - **Amazon EFS** para armazenamento compartilhado de arquivos do WordPress (mídias, plugins, etc.).  
