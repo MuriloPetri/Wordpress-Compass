@@ -1,11 +1,3 @@
-# 🌐 Projeto WordPress em Alta Disponibilidade na AWS
-
-Bem-vindo ao repositório do projeto **WordPress em Alta Disponibilidade na AWS**!  
-Este projeto demonstra como implantar a plataforma **WordPress** na **Amazon Web Services (AWS)** de forma escalável e tolerante a falhas.  
-A arquitetura utiliza serviços gerenciados da AWS para garantir **desempenho**, **resiliência** e **alta disponibilidade**, simulando um ambiente de produção real.
-
----
-
 ## ☁️ ARQUITETURA DO PROJETO
 
 A infraestrutura foi projetada para ser **resiliente** e **escalável**:
