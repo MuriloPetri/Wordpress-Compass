@@ -70,23 +70,28 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 ### 4. Configurar o EFS
 - Criar sistema de arquivos NFS
 - Clicar em **PERSONALIZAR**
-
+<img width="676" height="684" alt="Image" src="https://github.com/user-attachments/assets/d0b071e2-a5f6-42c6-97f0-483338c207a8" />
 - Associar subnets privadas de cada zona
-
+<img width="1559" height="342" alt="Image" src="https://github.com/user-attachments/assets/1851271f-2a8d-47b9-bc55-4d4ce96b04d4" />
 - E criar a EFS
 
 ### 5. Criar Launch Template
 - Sistema Operacional: Amazon Linux  
 - Tipo: `t2.micro`  
-- Selecionar VPC do projeto  
+- Selecionar VPC do projeto
+- Não precisa incluir a sub-rede
+- Incluir o Security Group da EC2  
 - Incluir script *user-data* para:
   - Instalar WordPress  
   - Montar EFS  
   - Conectar ao RDS  
 
 ### 6. Criar Target Group (Grupo de Destino)
-- Tipo de destino: **Instâncias**  
-- Caminho de verificação de integridade (Health Check Path): `/` ou `/wp-admin/images/wordpress-logo.svg`  
+- Tipo de destino: **Instâncias**
+- Incluir a VPC criada para o projeto
+- Selecionar a subnets públicas  
+- Caminho de verificação de integridade (Health Check Path): `/` ou `/wp-admin/images/wordpress-logo.svg`
+- 
 
 ### 7. Configurar Application Load Balancer
 - Associar às **subnets públicas**  
