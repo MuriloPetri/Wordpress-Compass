@@ -91,11 +91,15 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 - Incluir a VPC criada para o projeto
 - Selecionar a subnets públicas  
 - Caminho de verificação de integridade (Health Check Path): `/` ou `/wp-admin/images/wordpress-logo.svg`
-- 
+<img width="1073" height="260" alt="Image" src="https://github.com/user-attachments/assets/9e5ff602-7b35-4d4f-a4cc-1d75943d2d28" />
 
 ### 7. Configurar Application Load Balancer
+- Selecionar o tipo Application Load Balamcer
+- Voltado para Internet
+- Selecionar a VPC criada para o projeto
 - Associar às **subnets públicas**  
 - Direcionar tráfego para o **Target Group**  
+
 
 ### 8. Criar Auto Scaling Group
 - Usar o Launch Template criado  
