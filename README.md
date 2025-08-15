@@ -23,7 +23,8 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 ### 1. Criar a VPC
 - Criar 2 subnets públicas  
 - Criar 4 subnets privadas  
-- Criar IGW e NAT Gateway  
+- Criar IGW e NAT Gateway
+<img width="1404" height="880" alt="Image" src="https://github.com/user-attachments/assets/14954835-7c4d-49b8-bc43-909385cf85ed" />
 
 ### 2. Criando Security Groups
 
@@ -61,7 +62,8 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 - Criar instância MySQL ou MariaDB (qual preferir)  
 - Selecionar opção de *Free-tier*  
 - Tipo: `db.t3.micro`  
-- Associar à VPC criada  
+- Associar à VPC criada
+- **IMPORTANTE ->** Em configuração adicional escolha o mesmo nome do **Identificador da instância de banco de dados** para evitar possíveis erros
 
 ### 4. Configurar o EFS
 - Criar sistema de arquivos NFS  
