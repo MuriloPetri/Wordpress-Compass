@@ -27,7 +27,9 @@ A infraestrutura foi projetada para ser **resiliente** e **escalável**:
 <img width="1404" height="880" alt="Image" src="https://github.com/user-attachments/assets/14954835-7c4d-49b8-bc43-909385cf85ed" />
 
 ### 2. Criando Security Groups
-
+- No painel da EC2, no canto esquerdo no grupo Rede e Segurança, clique em Security Groups (Grupos de Segurança)
+- Crie os seguintes grupos:
+  
 #### sg-ALB (Application Load Balancer)
 | Direção | Tipo | Protocolo | Porta | Origem/Destino |
 |---------|------|-----------|-------|----------------|
