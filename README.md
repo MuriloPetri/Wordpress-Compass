@@ -117,7 +117,7 @@
 <img width="1917" height="918" alt="Image" src="https://github.com/user-attachments/assets/3179a93c-a83b-46e7-820d-b855e306d63d" />
 
 
-##USER DATA
+## 👨🏾‍💻USER DATA
 
 ````bash
 #!/bin/bash
